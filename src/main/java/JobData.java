@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -42,6 +39,9 @@ public class JobData {
             }
         }
 
+        // Bonus mission: sort the results
+        Collections.sort(values);
+
         return values;
     }
 
@@ -50,7 +50,8 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        // Bonus mission; normal version returns allJobs
+        return new ArrayList<>(allJobs);
     }
 
     /**
@@ -75,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -90,12 +91,29 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
-        // load data, if not already loaded
         loadData();
+        ArrayList<HashMap<String,String>> terms = new ArrayList<>();
+        System.out.println("method");
+        for(HashMap<String,String> term :allJobs){
+            Collection<String> vals=term.values();
+            for(String val:vals){
+                if(val.toLowerCase().contains(value.toLowerCase())){
+                    terms.add(term);
+                    break;
+                }
+
+            }
+
+
+
+        }
+
+        return terms;
+        // load data, if not already loaded
+
 
         // TODO - implement this method
-        return null;
+
     }
 
     /**
