@@ -93,7 +93,7 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
         loadData();
         ArrayList<HashMap<String,String>> terms = new ArrayList<>();
-        System.out.println("method");
+       // System.out.println("method");
         for(HashMap<String,String> term :allJobs){
             Collection<String> vals=term.values();
             for(String val:vals){
