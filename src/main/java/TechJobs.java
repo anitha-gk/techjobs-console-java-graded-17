@@ -128,10 +128,11 @@ public class TechJobs {
             System.out.println("\n*****");
             for(String key:someJobs.get(i).keySet()){
                 System.out.println(key+": "+someJobs.get(i).get(key));
+
             }
-
-
+            System.out.println("*****");
         }
-        System.out.println("*****");
+        //System.out.println("*****");
+
     }
 }
